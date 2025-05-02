@@ -13,8 +13,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: ['https://agrosense-kappa.vercel.app/', 'http://localhost:5173'],
-  credentials: true
+  origin: ['*'],
+  
 }));
 app.use(express.json());
 
