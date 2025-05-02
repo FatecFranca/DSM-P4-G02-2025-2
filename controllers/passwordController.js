@@ -30,7 +30,7 @@ const requestPasswordReset = async (req, res) => {
       },
     });
 
-    const resetLink = `http://localhost:5173/reset-password?token=${token}`;
+    const resetLink = `https://agrosense-kappa.vercel.app/reset-password?token=${token}`;
 
     await transporter.sendMail({
       from: 'seuemail@gmail.com',
