@@ -5,10 +5,10 @@ const cors = require("cors");
 const authRoutes = require("./routes/AuthRoutes");
 const dotenv = require("dotenv");
 const sensorRoutes = require("./routes/SensorRoutes");
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swaggerConfig'); 
 
 dotenv.config();
-
-
 
 const app = express();
 
@@ -19,7 +19,10 @@ app.use(cors({
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use('/api/sensor', sensorRoutes);
 
+// Rota da documentação Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get('/health', (req, res) => {
   res.json({ 
@@ -28,10 +31,6 @@ app.get('/health', (req, res) => {
     auth: 'JWT'
   });
 });
-
-app.use('/api/sensor', sensorRoutes);
-
-
 
 const PORT = 5000;
 app.listen(PORT, () => {
