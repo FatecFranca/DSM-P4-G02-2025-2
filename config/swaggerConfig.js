@@ -13,6 +13,10 @@ const swaggerDefinition = {
       url: 'http://localhost:5000', 
       description: 'Servidor local',
     },
+    {
+      url: 'https://back-end-pi-27ls.onrender.com/api-docs/#/',
+      description: 'Servidor em produção',
+    }
   ],
 };
 
