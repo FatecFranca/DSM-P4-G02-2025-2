@@ -11,6 +11,6 @@ const pool = mysql.createPool({
   queueLimit: 0,
   connectTimeout: 10000 
 });
-console.log('DB_USER:', process.env.DB_USER); 
+
 
 module.exports = pool;
