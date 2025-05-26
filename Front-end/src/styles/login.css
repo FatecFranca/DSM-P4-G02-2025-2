@@ -1,0 +1,145 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+    background: #052338;
+    color: white;
+  }
+  
+  .left-panel {
+    flex: 1;
+    background-color: #f0f8ff; /* cor de fundo clara, você pode trocar se quiser */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #333; /* texto escuro para combinar com fundo claro */
+  }
+  
+  .lottie-animation {
+    width: 450px;
+    height: 450px;
+    margin-bottom: 40px;
+  }
+  
+  
+  .right-panel {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  a{
+    color: #60a5fa;
+    text-decoration: none;
+  }
+  .input-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .checkbox-group label {
+    margin-left: 5px;
+  }
+  
+  .divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: "";
+    width: 30%;
+    height: 1px;
+    background: gray;
+    position: absolute;
+    top: 50%;
+  }
+  
+  .divider::before {
+    left: 0;
+  }
+  
+  .divider::after {
+    right: 0;
+  }
+  
+  .social-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+
+@media (max-width: 1024px) {
+    .login-container {
+      flex-direction: column;
+    }
+  
+    .left-panel {
+      flex: none;
+      height: 300px;
+    }
+  
+    .right-panel {
+      flex: none;
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .input-group {
+      flex-direction: column;
+    }
+  
+    .social-buttons {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .left-panel {
+      display: none; 
+    }
+  
+    .right-panel {
+      width: 90%;
+      max-width: 400px;
+    }
+  
+    .input-group {
+      flex-direction: column;
+    }
+  
+    .social-buttons {
+      flex-direction: column;
+    }
+  
+    .full-width {
+      width: 100%;
+    }
+  }
+  

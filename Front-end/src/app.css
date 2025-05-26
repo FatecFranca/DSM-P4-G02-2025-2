@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+.dark-mode {
+  --bg-primary: #0f172a;       
+  --bg-secondary: #1e293b;   
+  --bg-tertiary: #263144;   
+  --text-primary: #cbd5e1;
+  --text-secondary: #e2e8f0;
+  --title-color: #26d35a;
+  --btn-dark: #3b82f6; /* azul do Tailwind */
+}
+
+.light-mode {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f5f9;
+  --bg-tertiary: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #334155;
+  --title-color: #16a34a;
+  --btn-light: #3b82f6; /* azul do Tailwind */
+}
+
+/* Aplicação das classes */
+.dark-bg { background-color: var(--bg-primary) !important}
+.dark-bg-2 { background-color: var(--bg-secondary) !important }
+.dark-bg-3 { background-color: var(--bg-tertiary)  !important}
+.dark-text { color: var(--text-primary)  !important}
+.dark-text-2 { color: var(--text-secondary)  !important}
+.dark-Tittle { color: var(--title-color)  !important}
+
+.input-dark {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+.input-light {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  border-radius: 6px;
+}
+.btn-dark {
+  background-color: var(--btn-dark) !important;
+  color: var(--text-secondary) !important;
+}
+.btn-dark:disabled {
+  background-color: #64748b !important; 
+  color: #cbd5e1 ;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-light {
+  background-color: var(--btn-light) !important;
+  color: var(--bg-primary) !important;
+}
+.btn-light:disabled {
+  background-color: #cbd5e1 !important; 
+  color: #64748b !important; 
+  opacity: 0.7;
+  cursor: not-allowed;
+}
