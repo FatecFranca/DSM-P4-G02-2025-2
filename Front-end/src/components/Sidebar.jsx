@@ -20,7 +20,6 @@ const Sidebar = () => {
   const [notifications, setNotifications] = useState([]);
   const { isDarkMode } = useTheme();
 
-  // Notificações lidas persistidas
   const [readNotifications, setReadNotifications] = useState(() => {
     const saved = localStorage.getItem("readNotifications");
     return saved ? JSON.parse(saved) : [];
@@ -55,7 +54,7 @@ const Sidebar = () => {
     try {
       const response = await axios.get("https://back-end-pi-27ls.onrender.com/api/sensor/stats");
       const nots = (response.data.latest_data || []).map((item) => ({
-        id: item.timestamp, // Usa timestamp como id único
+        id: item.timestamp, 
         att: `Umidade: ${item.humidity} - ${new Date(item.timestamp).toLocaleString()}`
       }));
       setNotifications(nots.reverse().filter(n => !readNotifications.includes(n.id)));
@@ -64,13 +63,11 @@ const Sidebar = () => {
     }
   };
 
-  // Atualiza notificações sempre que readNotifications mudar
   useEffect(() => {
     fetchNotifications();
     // eslint-disable-next-line
   }, [readNotifications]);
 
-  // Atualiza hasNotification quando notifications mudar
   useEffect(() => {
     setHasNotification(notifications.length > 0);
   }, [notifications]);
@@ -84,7 +81,6 @@ const Sidebar = () => {
     }
   };
 
-  // Marca como lida e persiste no localStorage
   const handleMarkAsRead = (id) => {
     setNotifications((prev) => prev.filter((n) => n.id !== id));
     const updatedRead = [...readNotifications, id];
@@ -149,20 +145,14 @@ const Sidebar = () => {
               <FaChartBar className={sidebarText} />
               <p className={sidebarText}>Dashboard</p>
             </Link>
-            <Link
-              to="/configsensor"
-              className={`hover:${isDarkMode ? "bg-gray-800" : "bg-zinc-500"} px-4 py-2 rounded-md ${sidebarText} text-lg flex items-center gap-2`}
-            >
-              <GiWateringCan className={sidebarText} />
-              <p className={sidebarText}>Sensor</p>
-            </Link>
+{/* 
             <Link
               to="/relatorios"
               className={`hover:${isDarkMode ? "bg-gray-800" : "bg-zinc-500"} px-4 py-2 rounded-md ${sidebarText} text-lg flex items-center gap-2`}
             >
               <FaFileSignature className={sidebarText} />
               <p className={sidebarText}>Relatorios</p>
-            </Link>
+            </Link> */}
             <Link
               to="#"
               onClick={e => {

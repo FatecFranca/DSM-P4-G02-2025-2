@@ -42,7 +42,7 @@ export default function Rotas() {
         <Route path="/505" element={<Error505 />} />
         <Route path="*" element={<Error505 />} />
         <Route path="/relatorios" element={<ReportPage />} />
-        <Route path="/configsensor" element={<ConfigSensor />} />
+        {/* <Route path="/configsensor" element={<ConfigSensor />} /> */}
       </Routes>
       </ThemeProvider>
 
