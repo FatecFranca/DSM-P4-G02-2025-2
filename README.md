@@ -8,10 +8,6 @@ AgroSense é uma plataforma completa para monitoramento agrícola que combina da
 Recursos Principais ✨
 📊 Dashboard interativo para visualização de dados em tempo real
 
-📡 API robusta para integração com sensores IoT e sistemas terceiros
-
-🌾 Análise preditiva de safras e detecção precoce de pragas
-
 💧 Monitoramento inteligente de irrigação e umidade do solo
 
 📱 Design responsivo para acesso em qualquer dispositivo
