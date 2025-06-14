@@ -1,3 +1,5 @@
+Integrantes do grupo: Inácio Santana Silva, Jhonatan Dias Farias, Vinicius de Paula
+
 <h1>AgroSense - Monitoramento Agrícola Inteligente 🌱</h1>
 
 ![image](https://github.com/user-attachments/assets/58b2e78b-80f3-42e2-b10d-6f2c5a654ef1)
