@@ -13,7 +13,10 @@ export default function DashboardUmidade() {
       .then((response) => {
         const data = response.data;
 
-        const distribuicaoRaw = data.latest_data.map((item) => ({
+        // Copia e ordena latest_data por timestamp (crescente)
+        const dadosOrdenados = [...data.latest_data].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+        const distribuicaoRaw = dadosOrdenados.map((item) => ({
           date: new Date(item.timestamp),
           valor: item.humidity
         }));
@@ -42,14 +45,12 @@ export default function DashboardUmidade() {
           sobrecarregado: 0
         };
 
-        const historico = data.latest_data
-          .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)) // Ordenar cronologicamente
-          .map((item) => ({
-            label: new Date(item.timestamp).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }),
-            valor: item.humidity
-          }));
+        const historico = dadosOrdenados.map((item) => ({
+          label: new Date(item.timestamp).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }),
+          valor: item.humidity
+        }));
 
-        data.latest_data.forEach((item) => {
+        dadosOrdenados.forEach((item) => {
           const h = item.humidity;
           if (h < 30) distribuicao.critico++;
           else if (h < 50) distribuicao.baixo++;
@@ -58,7 +59,7 @@ export default function DashboardUmidade() {
           else distribuicao.sobrecarregado++;
         });
 
-        const total = data.latest_data.length;
+        const total = dadosOrdenados.length;
         const distribuicaoPercentual = {
           critico: (distribuicao.critico / total) * 100,
           baixo: (distribuicao.baixo / total) * 100,
@@ -66,6 +67,8 @@ export default function DashboardUmidade() {
           bom: (distribuicao.bom / total) * 100,
           sobrecarregado: (distribuicao.sobrecarregado / total) * 100
         };
+
+        const statusAtual = dadosOrdenados[dadosOrdenados.length - 1]?.humidity || 0;
 
         setStats({
           media: data.mean,
@@ -76,7 +79,7 @@ export default function DashboardUmidade() {
           curtose: data.kurtosis,
           previsaoAmanha: data.trend?.tomorrow_prediction || 0,
           statusAmanha: data.trend?.predicted_classification || '',
-          statusAtual: data.latest_data?.[0]?.humidity || 0,
+          statusAtual,
           distribuicao: distribuicaoPercentual,
           mediaMensal,
           historico,
@@ -147,16 +150,16 @@ export default function DashboardUmidade() {
   const lastFiveHistorico = stats?.historico?.slice(-5) || [];
 
   const lineData = {
-  labels: lastFiveHistorico.map(item => item.label),
-  datasets: [
-    {
-      data: lastFiveHistorico.map(item => item.valor),
-      color: (opacity = 1) => `rgba(0, 123, 255, ${opacity})`,
-      strokeWidth: 2
-    }
-  ],
-  legend: ['Umidade (%)']
-};
+    labels: lastFiveHistorico.map(item => item.label),
+    datasets: [
+      {
+        data: lastFiveHistorico.map(item => item.valor),
+        color: (opacity = 1) => `rgba(0, 123, 255, ${opacity})`,
+        strokeWidth: 2
+      }
+    ],
+    legend: ['Umidade (%)']
+  };
 
   return (
     <ScrollView style={styles.container}>

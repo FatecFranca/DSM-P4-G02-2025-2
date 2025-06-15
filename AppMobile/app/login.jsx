@@ -67,10 +67,6 @@ export default function Login() {
     router.push("/")
   }
 
-  const handledashboard = () => {
-    router.push('/dashboard');
-  };
-
   return (
     <View style={styles.loginContainer}>
         <Text style={styles.textwhite}>Bem vindo ao dashboard do P.I</Text>
@@ -98,9 +94,6 @@ export default function Login() {
 
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text>Login</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handledashboard}>
-            <Text>Dashboard</Text>
           </TouchableOpacity>
     </View>
   )  
