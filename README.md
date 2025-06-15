@@ -1,5 +1,7 @@
 Integrantes do grupo: Inácio Santana Silva, Jhonatan Dias Farias, Vinicius de Paula
 
+Projeto Mobile funcionando em ExpoGo 2.39.19 (é necessário utilizar esta versão em seu android sendo ele emulador ou físico)
+
 <h1>AgroSense - Monitoramento Agrícola Inteligente 🌱</h1>
 
 ![image](https://github.com/user-attachments/assets/58b2e78b-80f3-42e2-b10d-6f2c5a654ef1)
